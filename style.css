@@ -1,0 +1,275 @@
+/* Reseteo básico */
+* {
+  /* Reseteo básico */
+    margin: 0; /* Elimina los margenes que viennen por defecto */
+    padding: 0;/* Elimina tambien los padding por defecto */
+    box-sizing: border-box;
+    
+  /* Fuentes */
+  .lato-light {
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+  }
+  
+  
+  .lato-thin-italic {
+    font-family: "Lato", serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2em;
+    color: rgb(78, 67, 46);
+  }
+  }
+ 
+  body {
+    font-family: "Lato", serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./media/fondoNav1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas: 
+        "nav"
+        "main"
+        "footer";
+    grid-template-rows: 127px 1fr auto;
+    height: 100vh;
+}
+/*Nav*/
+.containerNav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el contenido entre los extremos */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para el nav */
+    z-index: 2; /* Asegura que el contenido del nav esté encima del fondo */
+}
+
+.logo {
+    width: 80px; /* Tamaño ajustado para el logo */
+    height: 80px;
+    border-radius: 50%; /* Hace que el logo sea circular */
+}
+
+.mainText {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    flex-grow: 1; /* Ocupa el espacio restante en el centro */
+}
+
+#menu {
+    display: flex;
+    flex-direction:row; /* Apila los elementos del menú horizontalmente */
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    color: white;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#menu li {
+    cursor: pointer;
+    transition: color 0.3s;
+    
+}
+
+#menu li:hover {
+    color: rgb(157, 226, 196); /* Cambia el color al pasar el cursor */
+}
+/*Main*/
+
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta las tarjetas en filas y columnas */
+    gap: 20px;
+    padding: 20px;
+   
+  }
+  
+  .containerCards {
+    perspective: 1000px; /* Da la ilusión de profundidad 3D */
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+  
+  .cards {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* Suaviza el giro */
+    cursor: pointer;
+    
+  }
+  
+  /* Gira la tarjeta al pasar el cursor */
+  .containerCards:hover .cards {
+    transform: rotateY(180deg);
+  }
+  
+  .cardFront,
+  .cardBack {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la cara trasera cuando no está girada */
+    border-radius: 10px;
+    overflow: hidden;/*para que no desborde el contenido */
+  }
+  
+  .cardFront {
+    background-color: rgb(71, 87, 80);
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 20px;
+    
+  }
+  .name{
+    font-size: 3em;
+    font-weight: bold;
+    font-family:'Lato';
+  
+  }
+  .cardFront img {
+    max-width: 100%;
+    width: 300px; /* Tamaño fijo para la imagen */
+    height: 300px; /* Altura fija para que sea perfectamente circular */
+    border-radius: 50%;
+    border: 10px solid rgb(245, 243, 239);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);/* para aplicarle la sombra a la foto */
+  }
+  
+  .cardBack {
+    background-color: rgb(185, 164, 146);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: rotateY(180deg); /* Orienta el reverso hacia atrás */
+    color: rgb(78, 67, 46);
+    padding: 20px;
+  }
+  p{
+    font-size: 2em ;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .cardBack .infoDatos {
+    font-size: 1em;
+    margin-bottom: 15px;
+    font-family: 'Lato';
+  }
+  li{
+    list-style-type: none;/* quita los puntos en la lista */
+  }
+  .cardBack .button-link {
+    display: inline-block;
+    text-decoration: none;/* quita el subrayado del link*/
+    background-color: rgb(78, 67, 46);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .cardBack .button-link:hover {
+    background-color: rgb(229, 211, 195);
+    color: rgb(78, 67, 46);
+  }
+  
+  /*Footer*/
+  footer {
+    grid-area: footer;
+    background-color: rgb(71, 87, 80);
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-family:'Lato';
+    color: white;
+  }
+/*Tablets*/
+  @media screen and (max-width: 768px) {
+    
+   .containerNav {
+    padding: 15px; 
+    font-size: 1em; 
+  }
+    .containerCards {
+      height: 400px; 
+    
+    }
+  
+    .cardFront img {
+      width: 200px; 
+      height: 200px;
+    }
+  
+    .cardBack .infoDatos {
+      font-size: 1.2em; 
+    }
+  
+    .cardBack .button-link {
+      font-size: 1.5em; 
+      padding: 8px 16px; 
+    }
+  
+  
+  }
+  /*Moviles*/
+  @media screen and (max-width: 480px) {
+    
+    .mainText {
+      padding: 2px; 
+      font-size: 1em; 
+    }
+  
+    footer {
+      font-size: 2em; 
+      padding: 10px;
+    }
+  
+    .containerCards {
+      height: 350px; 
+    }
+  
+    .cardFront img {
+      width: 150px; 
+      height: 150px;
+    }
+  
+    .cardBack .infoDatos {
+      font-size: 1em; 
+    }
+  
+    .cardBack .button-link {
+      font-size: 1.2em; 
+      padding: 6px 12px;
+    }
+  }
+  
+    
+  
+  
